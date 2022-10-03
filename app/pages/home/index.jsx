@@ -46,6 +46,11 @@ import {
  * The page renders SEO metadata and a few promotion
  * categories and products, data is from local file.
  */
+
+const MyHeader = () => {
+    return <h1>Hello from custom component</h1>
+}
+
 const Home = ({productSearchResult, isLoading}) => {
     const intl = useIntl()
 
@@ -56,7 +61,7 @@ const Home = ({productSearchResult, isLoading}) => {
                 description="Commerce Cloud Retail React App"
                 keywords="Commerce Cloud, Retail React App, React Storefront"
             />
-
+            <MyHeader />
             <Hero
                 title={intl.formatMessage({
                     defaultMessage: 'The React PWA Starter Store for Retail',
