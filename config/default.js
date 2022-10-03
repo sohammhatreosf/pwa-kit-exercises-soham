@@ -22,17 +22,24 @@ module.exports = {
         commerceAPI: {
             proxyPath: `/mobify/proxy/api`,
             parameters: {
-                clientId: 'c9c45bfd-0ed3-4aa2-9971-40f88962b836',
-                organizationId: 'f_ecom_zzrf_001',
-                shortCode: '8o7m175y',
-                siteId: 'RefArchGlobal'
+                clientId: 'acd41d84-721c-4df0-b217-5144751a6f43',
+                organizationId: 'f_ecom_zzrb_289',
+                shortCode: 'kv7kzm78',
+                siteId: 'RefArch'
+            },
+            ocapi: {
+                baseTokenUrl: 'https://account.demandware.com/dw/oauth2/access_token',
+                proxyPath: `/mobify/proxy/ocapi`,
+                ocapi_clientId: 'd53e494e-20f4-4c40-9c22-b6f5146709aa',
+                ocapi_clientPwd: 'j)p9()JZx80Gur',
+                api_version: 'v22_8'
             }
         },
         einsteinAPI: {
             proxyPath: `/mobify/proxy/einstein`,
-            einsteinId: '1ea06c6e-c936-4324-bcf0-fada93f83bb1',
+            einsteinId: 'undefined',
             // This differs from the siteId in commerceAPIConfig for testing purposes
-            siteId: 'aaij-MobileFirst'
+            siteId: 'RefArch'
         }
     },
     externals: [],
@@ -54,7 +61,12 @@ module.exports = {
                 path: 'api'
             },
             {
-                host: 'zzrf-001.sandbox.us03.dx.commercecloud.salesforce.com',
+                protocol:"https",
+                host:"prd.us.shopper.commercecloud.salesforce.com",
+                path:"slas"
+            },
+            {
+                host: 'zzrb-289.sandbox.us03.dx.commercecloud.salesforce.com',
                 path: 'ocapi'
             },
             {
