@@ -50,7 +50,7 @@ import {
  */
 
 const MyHeader = ({name}) => {
-    return(
+    return (
         <Box>
             <h1>Hello, {name}!</h1>
             <Alert padding="10" status="success">
@@ -71,7 +71,7 @@ const Home = ({productSearchResult, isLoading}) => {
                 description="Commerce Cloud Retail React App"
                 keywords="Commerce Cloud, Retail React App, React Storefront"
             />
-            <MyHeader name="Soham"/>
+            <MyHeader name="Soham" />
             <Hero
                 title={intl.formatMessage({
                     defaultMessage: 'The React PWA Starter Store for Retail',

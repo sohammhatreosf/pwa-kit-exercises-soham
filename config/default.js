@@ -61,9 +61,9 @@ module.exports = {
                 path: 'api'
             },
             {
-                protocol:"https",
-                host:"prd.us.shopper.commercecloud.salesforce.com",
-                path:"slas"
+                protocol: 'https',
+                host: 'prd.us.shopper.commercecloud.salesforce.com',
+                path: 'slas'
             },
             {
                 host: 'zzrb-289.sandbox.us03.dx.commercecloud.salesforce.com',
