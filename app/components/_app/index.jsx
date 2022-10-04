@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: BSD-3-Clause
  * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
-
+import fetch from 'cross-fetch'
 import React, {useState, useEffect} from 'react'
 import PropTypes from 'prop-types'
 import {useHistory, useLocation} from 'react-router-dom'
@@ -53,7 +53,7 @@ const DEFAULT_NAV_DEPTH = 3
 const DEFAULT_ROOT_CATEGORY = 'root'
 
 const App = (props) => {
-    const {children, targetLocale, messages, categories: allCategories = {}} = props
+    const {privacyPolicy, children, targetLocale, messages, categories: allCategories = {}} = props
 
     const appOrigin = getAppOrigin()
 
@@ -258,6 +258,11 @@ const App = (props) => {
                     </CurrencyProvider>
                 </CategoriesProvider>
             </IntlProvider>
+            <div>
+                {privacyPolicy && (
+                <   div dangerouslySetInnerHTML={{__html: privacyPolicy.c_body}} />
+                )}
+            </div>
         </Box>
     )
 }
@@ -322,11 +327,21 @@ Learn more with our localization guide. https://sfdc.co/localization-guide
     // the application.
     const categories = flatten(rootCategory, 'categories')
 
+    let privacyPolicy
+    const result = await fetch(
+        `http://localhost:3000/mobify/proxy/ocapi/s/RefArch/dw/shop/v20_2/content/privacy-policy?client_id=d53e494e-20f4-4c40-9c22-b6f5146709aa`
+    )
+
+    if (result.ok) {
+        privacyPolicy = await result.json()
+    }
+
     return {
         targetLocale,
         messages,
         categories,
-        config: res?.locals?.config
+        config: res?.locals?.config,
+        privacyPolicy
     }
 }
 
@@ -335,7 +350,8 @@ App.propTypes = {
     targetLocale: PropTypes.string,
     messages: PropTypes.object,
     categories: PropTypes.object,
-    config: PropTypes.object
+    config: PropTypes.object,
+    privacyPolicy: PropTypes.object
 }
 
 export default App
