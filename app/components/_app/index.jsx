@@ -149,7 +149,7 @@ const App = (props) => {
     useEffect(() => {
         const fetchStore = async () => {
             const res = await fetch(
-                `http://localhost:3000/mobify/proxy/ocapi/s/RefArch/dw/shop/v20_2/stores?latitude=${GEO_LOCATION.lat}&longitude=${GEO_LOCATION.long}&client_id=d53e494e-20f4-4c40-9c22-b6f5146709aa`
+                `${getAppOrigin()}/mobify/proxy/ocapi/s/RefArch/dw/shop/v20_2/stores?latitude=${GEO_LOCATION.lat}&longitude=${GEO_LOCATION.long}&client_id=d53e494e-20f4-4c40-9c22-b6f5146709aa`
             )
             if (res.ok) {
                 const storeResult = await res.json()

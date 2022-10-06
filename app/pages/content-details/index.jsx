@@ -1,6 +1,8 @@
 import React from 'react'
 import fetch from 'cross-fetch'
 import { HTTPError } from 'pwa-kit-react-sdk/ssr/universal/errors'
+import {getAppOrigin} from 'pwa-kit-react-sdk/utils/url'
+
 
 const ContentDetails = ({ contentResult, error }) => {
     if (error) {
@@ -14,7 +16,7 @@ const ContentDetails = ({ contentResult, error }) => {
 ContentDetails.getProps = async ({ params, res }) => {
     let contentResult, error
     const result = await fetch(
-        `http://localhost:3000/mobify/proxy/ocapi/s/RefArch/dw/shop/v20_2/content/${params.id}?client_id=d53e494e-20f4-4c40-9c22-b6f5146709aa`
+        `${getAppOrigin()}/mobify/proxy/ocapi/s/RefArch/dw/shop/v20_2/content/${params.id}?client_id=d53e494e-20f4-4c40-9c22-b6f5146709aa`
     )
     if (result.ok) {
         contentResult = await result.json()
